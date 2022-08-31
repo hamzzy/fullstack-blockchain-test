@@ -1,0 +1,428 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "previousAdminRole",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "newAdminRole",
+        "type": "bytes32"
+      }
+    ],
+    "name": "RoleAdminChanged",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleGranted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      }
+    ],
+    "name": "RoleRevoked",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes",
+        "name": "vin",
+        "type": "bytes"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "brand",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "model",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "year",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "createdAt",
+        "type": "uint256"
+      }
+    ],
+    "name": "VehicleCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "car_id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "brake",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "bumpers",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "interior",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "light",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "tyres",
+        "type": "uint8"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "milleage",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "Engine",
+        "type": "uint8"
+      }
+    ],
+    "name": "inspecationCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "service_owrker",
+        "type": "address"
+      }
+    ],
+    "name": "submitServiceWorker",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "DEFAULT_ADMIN_ROLE",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "SERVICE_WORKER",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes", "name": "", "type": "bytes" }],
+    "name": "_idcar",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "bytes", "name": "vin", "type": "bytes" },
+      { "internalType": "string", "name": "brand", "type": "string" },
+      { "internalType": "string", "name": "model", "type": "string" },
+      { "internalType": "uint256", "name": "year", "type": "uint256" },
+      { "internalType": "uint256", "name": "createdAt", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "_idcarInspectation",
+    "outputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "uint256", "name": "car_id", "type": "uint256" },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "brake",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "bumpers",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "interior",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "light",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "tyres",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "milleage", "type": "uint256" },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "engine",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "_vin", "type": "bytes" },
+      { "internalType": "string", "name": "_brand", "type": "string" },
+      { "internalType": "string", "name": "_model", "type": "string" },
+      { "internalType": "uint256", "name": "_year", "type": "uint256" }
+    ],
+    "name": "addCar",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "_vin", "type": "bytes" },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_brake",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_bumpers",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_interior",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_light",
+        "type": "uint8"
+      },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_tyres",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "_milleage", "type": "uint256" },
+      {
+        "internalType": "enum VehicleManager.InspecationState",
+        "name": "_engine",
+        "type": "uint8"
+      }
+    ],
+    "name": "addInspectionDetails",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_service_worker",
+        "type": "address"
+      }
+    ],
+    "name": "addServiceWorker",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" }
+    ],
+    "name": "getRoleAdmin",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "grantRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "hasRole",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "renounceRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "role", "type": "bytes32" },
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "revokeRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }
+    ],
+    "name": "supportsInterface",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

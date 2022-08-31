@@ -1,0 +1,33 @@
+enum InspecationState {
+	Excelent, 
+	Good, 
+	Fair, 
+	Bad
+}
+
+type VehicleEntity @entity {
+	id: ID!
+	vin: Bytes!
+	brand: String!
+	model: String!
+	year: Int!
+	createdAt: Int!
+}
+
+type InspectationDetailsEntity @entity {
+	id: ID!
+	car_id: VehicleEntity!
+	brake : InspecationState!
+	bumpers: InspecationState!
+	interior:  InspecationState!
+	light:  InspecationState!
+	milleage: Int!
+	engine :  InspecationState!
+}
+
+
+type ServiceWorkersEntity @entity{
+	id: ID!
+	workers: Bytes!
+}
+
