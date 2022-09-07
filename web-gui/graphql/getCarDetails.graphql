@@ -1,0 +1,10 @@
+query getCarDetails($vin: Bytes) {
+  vehicleEntities(where: {vin_contains:$vin }) {
+    brand
+    createdAt
+    model
+    vin
+    year
+    id
+  }
+}

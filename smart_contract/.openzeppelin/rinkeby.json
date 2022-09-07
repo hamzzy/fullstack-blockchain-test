@@ -1,0 +1,321 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0x8116b367e2DE1B82AD0C565c74F1295b350fd54A",
+    "txHash": "0xf83cfaa9000e6f73b6244f1ee0eccbd6f37a587b97a7ab34b1d86a05a69577e0"
+  },
+  "proxies": [
+    {
+      "address": "0x7951BBeF34d6EEb5d65a9182DE09d7602C437198",
+      "txHash": "0x892cbb8918809d0576e3ac575a1b1d3d7e69e772bad90ee53489cc6389bc6150",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "e645514bd0d7aab915f904c301d6064a0817aba7f1a801bab9d55898ee26cf9f": {
+      "address": "0x8162125C387a8Ad2997574A902CD796D8C8b4aCD",
+      "txHash": "0x751ff242e556cecc300c20a851683eb52fc5f14a40fda46528a47bff6abde988",
+      "layout": {
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint8",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ContextUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "OwnableUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "101",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ERC165Upgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol:41"
+          },
+          {
+            "label": "_roles",
+            "offset": 0,
+            "slot": "151",
+            "type": "t_mapping(t_bytes32,t_struct(RoleData)34_storage)",
+            "contract": "AccessControlUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:61"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "152",
+            "type": "t_array(t_uint256)49_storage",
+            "contract": "AccessControlUpgradeable",
+            "src": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol:259"
+          },
+          {
+            "label": "_carId",
+            "offset": 0,
+            "slot": "201",
+            "type": "t_struct(Counter)1796_storage",
+            "contract": "VehicleManager",
+            "src": "contracts/Car.sol:15"
+          },
+          {
+            "label": "_inspectationId",
+            "offset": 0,
+            "slot": "202",
+            "type": "t_struct(Counter)1796_storage",
+            "contract": "VehicleManager",
+            "src": "contracts/Car.sol:16"
+          },
+          {
+            "label": "_idcar",
+            "offset": 0,
+            "slot": "203",
+            "type": "t_mapping(t_bytes_memory_ptr,t_struct(Vehicle)2477_storage)",
+            "contract": "VehicleManager",
+            "src": "contracts/Car.sol:47"
+          },
+          {
+            "label": "_idcarInspectation",
+            "offset": 0,
+            "slot": "204",
+            "type": "t_mapping(t_uint256,t_struct(vehicleInspectation)2507_storage)",
+            "contract": "VehicleManager",
+            "src": "contracts/Car.sol:48"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]",
+            "numberOfBytes": "1568"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_bytes32": {
+            "label": "bytes32",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_memory_ptr": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_bytes_storage": {
+            "label": "bytes",
+            "numberOfBytes": "32"
+          },
+          "t_enum(InspecationState)2482": {
+            "label": "enum VehicleManager.InspecationState",
+            "members": [
+              "Excelent",
+              "Good",
+              "Fair",
+              "Bad"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes32,t_struct(RoleData)34_storage)": {
+            "label": "mapping(bytes32 => struct AccessControlUpgradeable.RoleData)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_bytes_memory_ptr,t_struct(Vehicle)2477_storage)": {
+            "label": "mapping(bytes => struct VehicleManager.Vehicle)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_uint256,t_struct(vehicleInspectation)2507_storage)": {
+            "label": "mapping(uint256 => struct VehicleManager.vehicleInspectation)",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Counter)1796_storage": {
+            "label": "struct Counters.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              }
+            ],
+            "numberOfBytes": "32"
+          },
+          "t_struct(RoleData)34_storage": {
+            "label": "struct AccessControlUpgradeable.RoleData",
+            "members": [
+              {
+                "label": "members",
+                "type": "t_mapping(t_address,t_bool)",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "adminRole",
+                "type": "t_bytes32",
+                "offset": 0,
+                "slot": "1"
+              }
+            ],
+            "numberOfBytes": "64"
+          },
+          "t_struct(Vehicle)2477_storage": {
+            "label": "struct VehicleManager.Vehicle",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "vin",
+                "type": "t_bytes_storage",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "brand",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "model",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "year",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "createdAt",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_struct(vehicleInspectation)2507_storage": {
+            "label": "struct VehicleManager.vehicleInspectation",
+            "members": [
+              {
+                "label": "id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "car_id",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "brake",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "bumpers",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 1,
+                "slot": "2"
+              },
+              {
+                "label": "interior",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 2,
+                "slot": "2"
+              },
+              {
+                "label": "light",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 3,
+                "slot": "2"
+              },
+              {
+                "label": "tyres",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 4,
+                "slot": "2"
+              },
+              {
+                "label": "milleage",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "engine",
+                "type": "t_enum(InspecationState)2482",
+                "offset": 0,
+                "slot": "4"
+              }
+            ],
+            "numberOfBytes": "160"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint8": {
+            "label": "uint8",
+            "numberOfBytes": "1"
+          }
+        }
+      }
+    }
+  }
+}

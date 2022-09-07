@@ -52,6 +52,7 @@ describe("Vehicle Managment", function () {
             const {vehicle, owner} = await loadFixture(deployVehicleManagement);
             expect(vehicle.addCar(vin, "toyota", "a4", 2022)).to.emit(vehicle, "VehicleCreated")
 
+
         });
 
         it("it should emit event with data", async function () {

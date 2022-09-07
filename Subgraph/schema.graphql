@@ -10,19 +10,21 @@ type VehicleEntity @entity {
 	vin: Bytes!
 	brand: String!
 	model: String!
-	year: Int!
-	createdAt: Int!
+	year: BigInt!
+	createdAt:BigInt!
+	InspectationDetails: InspectationDetailsEntity! @derivedFrom(field: "car_id")
 }
 
 type InspectationDetailsEntity @entity {
 	id: ID!
 	car_id: VehicleEntity!
-	brake : InspecationState!
-	bumpers: InspecationState!
-	interior:  InspecationState!
-	light:  InspecationState!
-	milleage: Int!
-	engine :  InspecationState!
+	brake : Int!
+	bumpers: Int!
+	interior:  Int!
+	light:  Int!
+	milleage: BigInt!
+	engine :  Int!
+	tyres: Int!
 }
 
 

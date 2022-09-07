@@ -46,7 +46,7 @@ contract VehicleManager is Ownable, AccessControl {
 
     event VehicleCreated(
         uint256 id,
-        bytes indexed vin,
+        bytes vin,
         string brand,
         string model,
         uint256 year,
@@ -132,7 +132,7 @@ contract VehicleManager is Ownable, AccessControl {
      */
 
     function addInspectionDetails(
-        bytes calldata _vin,
+        bytes memory _vin,
         InspecationState _brake,
         InspecationState _bumpers,
         InspecationState _interior,

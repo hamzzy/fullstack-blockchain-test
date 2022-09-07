@@ -20,50 +20,52 @@ import {
   ListItem,
   ListIcon,
 } from "@chakra-ui/react";
+import { ApiClientsContext } from "pages/_app";
+import { FaCheckCircle } from 'react-icons/fa';
+import { useContext, useEffect, useRef, useState } from "react";
+import { useGetAllServiceWorkerQuery } from "generated/graphql";
 
-import { FunctionComponent } from "react";
+export const ServiceWorkerTable = () => {
+  const [serviceWorkers,setServiceWorker]= useState<any>([]);
+  const apiClients = useContext(ApiClientsContext)!;
+const { subgraphClients } = apiClients;
+const [queryParams, setQueryParams] = useState<any>({
+  client: subgraphClients.client,
+});
+  useEffect(() => {
+    setQueryParams({
+      client: subgraphClients.client,
+      variables: {},
+    });
+  }, []);
+  const { data, error, loading } = useGetAllServiceWorkerQuery(queryParams);
+  useEffect(() => {
+    if (data) {
+      setServiceWorker(data?.serviceWorkersEntities);
+      // console.log("data", data?.serviceWorkersEntities);
 
-interface serviceWorkerTableProps {
-  data: any;
-}
-
-export const ServiceWorkerTable: FunctionComponent<
-  serviceWorkerTableProps
-> = () => {
+    }
+    
+  }, [data, error, loading]);
+  useEffect(() => {
+    console.log(serviceWorkers);
+    
+  }, []);  
   return (
     <Container maxW="container.lg"
+    width="500px"
     >
+      
       <List spacing={3}>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  <ListItem>
-    <ListIcon as="svg" color='green.500' />
-    0xEB64e8Ff1c1d58fFaFF0999974F3B3D652D72f29
-  </ListItem>
-  
+      { serviceWorkers.length > 0 &&  serviceWorkers.map((data:any)=>(
+
+  <ListItem key="">
+    <ListIcon as={FaCheckCircle} color='green.500' />
+      {data.workers}
+  </ListItem>  
+      ))}
 </List>
+        
     </Container>
   );
 };

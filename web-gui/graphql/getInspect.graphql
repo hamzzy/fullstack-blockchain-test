@@ -1,0 +1,15 @@
+query InspectationDetailsOnly($car: String!) {
+  inspectationDetailsEntities(
+    where: {car_id:car }
+    ) {
+    brake
+    bumpers
+    car_id
+    engine
+    interior
+    id
+    light
+    milleage
+  }
+}
+9

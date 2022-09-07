@@ -4,10 +4,9 @@ schema:
 dataSources:
   - kind: ethereum
     name: VehicleManager
-    network: mainnet
+    network: rinkeby
     source:
-      address: "0x8C7c94D974449d1FBC6665503275f3bBaC4C7937"
-
+      address: "0x630F1462b0C371f238A1776E46976Ebe69a74bab"
       abi: VehicleManager
       startBlock: 11287361
     mapping:
@@ -34,7 +33,7 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-        - event: VehicleCreated(uint256,indexed bytes,string,string,uint256,uint256)
+        - event: VehicleCreated(uint256,bytes,string,string,uint256,uint256)
           handler: handleVehicleCreated
         - event: inspecationCreated(uint256,uint256,uint8,uint8,uint8,uint8,uint8,uint256,uint8)
           handler: handleinspecationCreated

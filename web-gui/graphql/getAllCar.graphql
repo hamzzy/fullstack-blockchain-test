@@ -1,0 +1,10 @@
+query getAllCar {
+  vehicleEntities {
+    brand
+    createdAt
+    model
+    vin
+    year
+    id
+  }
+}

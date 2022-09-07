@@ -1,0 +1,5 @@
+query getAllCarVin {
+  vehicleEntities {
+    vin
+  }
+}

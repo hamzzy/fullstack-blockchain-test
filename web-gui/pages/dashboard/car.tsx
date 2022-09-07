@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -15,25 +15,22 @@ import {
   ToastId,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import carlist from "../../utils/cars_brand.json";
-import bgimage from "../public/assets/bg.png";
+import carlist from "../../utils/cars_brand_logo.json";
 import { useRouter } from "next/router";
 import {
   useAccount,
-  useBalance,
-  useContract,
-  useContractEvent,
-  useSigner,
 } from "wagmi";
 import { FunctionComponent } from "react";
 import Dashboard from "@components/dashboard";
-import Vehicle from "../../abis/VehicleManager.json";
 import ErrorToast from "@components/Toast/errorToast";
 import getErrorMessage from "utils/errorUtils";
 import { SubmitHandler, useForm } from "react-hook-form";
 import SuccessToast from "@components/Toast/successToast";
 import { utils } from "ethers";
 import useVehicleContract from "hooks/contracts/useAddVehicleContract";
+import { useGetAllCarQuery } from "generated/graphql";
+import { ApiClientsContext } from "pages/_app";
+import CustomTable from "@components/Table/carTable";
 interface CarProps {}
 
 interface IFormInputs {
@@ -50,6 +47,7 @@ export const Car: FunctionComponent<CarProps> = () => {
   const vehicleContract = useVehicleContract()
 
 
+  
   const {
     handleSubmit,
     register,
@@ -59,6 +57,9 @@ export const Car: FunctionComponent<CarProps> = () => {
     if (!isConnected) router.replace("/");
   }, [isConnected]);
 
+  
+
+  
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
     try {
@@ -199,6 +200,11 @@ export const Car: FunctionComponent<CarProps> = () => {
           </form>
         </Stack>
       </Container>
+      <Box>
+
+      <CustomTable />
+
+        </Box>
     </Dashboard>
   );
 };

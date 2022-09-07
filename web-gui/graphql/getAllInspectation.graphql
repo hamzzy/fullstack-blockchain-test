@@ -1,0 +1,12 @@
+query GetAllInspectation {
+  inspectationDetailsEntities {
+    brake
+    bumpers
+    engine
+    interior
+    id
+    light
+    milleage
+    tyres
+  }
+}
