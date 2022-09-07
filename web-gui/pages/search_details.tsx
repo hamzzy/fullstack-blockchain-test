@@ -20,26 +20,30 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
-import { GetCarDetailsQuery, useGetCarDetailsQuery } from "generated/graphql";
+import {
+  useInspectationDetailsOnlyQuery,
+  useGetCarDetailsQuery,
+} from "generated/graphql";
 
 import { Layout } from "../components/Layout";
 import { FunctionComponent } from "react";
 import { useRouter } from "next/router";
 import { ApiClientsContext } from "./_app";
 import { utils } from "ethers";
-import { addVehicleLogo, byte2Vin } from "utils/formatingUtils";
+import { addVehicleLogo, byte2Vin, convertEnum } from "utils/formatingUtils";
 
 interface DasboardProps {}
 
 export const SearchDetails: FunctionComponent<DasboardProps> = () => {
-  const [carVin, setCarVin] = useState<string>("");
+  const [carVin, setCarVin] = useState<String>("");
+  const [getInpsect, setInspect] = useState<any>([]);
   const [getData, setData] = useState<any>({
     brand: "",
     createdAt: "",
     model: "",
     vin: "",
     year: "",
-    id:""
+    id: "",
   });
 
   const apiClients = useContext(ApiClientsContext)!;
@@ -55,11 +59,24 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
   const [queryParams, setQueryParams] = useState<any>({
     client: subgraphClients.client,
   });
+
+  const [queryParams1, setQueryParams1] = useState<any>({
+    client: subgraphClients.client,
+  });
   useEffect(() => {
     setQueryParams({
       client: subgraphClients.client,
       variables: {
         vin: carVin,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    setQueryParams1({
+      client: subgraphClients.client,
+      variables: {
+        car: getData.id,
       },
     });
   }, []);
@@ -71,25 +88,35 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
       setData({
         brand: data.vehicleEntities[0].brand,
         createdAt: data.vehicleEntities[0].createdAt,
-        model : data.vehicleEntities[0].model,
-        vin : byte2Vin(data.vehicleEntities[0].vin),
+        model: data.vehicleEntities[0].model,
+        vin: byte2Vin(data.vehicleEntities[0].vin),
         year: data.vehicleEntities[0].year,
-       id : data.vehicleEntities[0].id,
+        id: data.vehicleEntities[0].id,
       });
-    }  }, [data, error, loading]);
+    }
+  }, [data, error, loading]);
 
+  const {
+    data: inspect,
+    error: inspect_error,
+    loading: inspect_loading,
+  } = useInspectationDetailsOnlyQuery(queryParams1);
 
-    useEffect(() => {
-      setQueryParams({
-        client: subgraphClients.client,
-        variables: {
-          id: carVin,
-        },
-      });
-    }, []);
-  
-    // const { data: inspect, error, loading } = useGetCarDetailsQuery(queryParams);
+  useEffect(() => {
+    if (inspect) {
+      console.log("inspect", inspect.inspectationDetailsEntities);
+      setInspect(inspect.inspectationDetailsEntities);
 
+      // setData({
+      //   brand: data.vehicleEntities[0].brand,
+      //   createdAt: data.vehicleEntities[0].createdAt,
+      //   model : data.vehicleEntities[0].model,
+      //   vin : byte2Vin(data.vehicleEntities[0].vin),
+      //   year: data.vehicleEntities[0].year,
+      //  id : data.vehicleEntities[0].id,
+      // });
+    }
+  }, [inspect, inspect_error, inspect_loading]);
 
   return (
     <Layout>
@@ -103,9 +130,7 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
             <Image
               rounded={"md"}
               alt={"product image"}
-              src={
-                addVehicleLogo(getData.brand)
-              }
+              src={addVehicleLogo(getData.brand)}
               fit={"contain"}
               align={"center"}
               w={"100%"}
@@ -127,9 +152,7 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
                 fontWeight={300}
                 fontSize={"2xl"}
               >
-
-{getData.vin}
-
+                {getData.vin}
               </Text>
             </Box>
 
@@ -155,10 +178,10 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
 
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                   <List spacing={2}>
-                    <ListItem> Model : {" "} {getData.model}</ListItem>
+                    <ListItem> Model : {getData.model}</ListItem>
                   </List>
                   <List spacing={2}>
-                  <ListItem>Year: {" "} {getData.year}</ListItem>{" "} 
+                    <ListItem>Year: {getData.year}</ListItem>{" "}
                   </List>
                 </SimpleGrid>
               </Box>
@@ -170,65 +193,68 @@ export const SearchDetails: FunctionComponent<DasboardProps> = () => {
                   textTransform={"uppercase"}
                   mb={"4"}
                 >
-                  Inspeactation Details
+                  Inspectation Details
                 </Text>
 
                 <List spacing={2}>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Between lugs:
-                    </Text>{" "}
-                    20 mm
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Bracelet:
-                    </Text>{" "}
-                    leather strap
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case:
-                    </Text>{" "}
-                    Steel
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case diameter:
-                    </Text>{" "}
-                    42 mm
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Dial color:
-                    </Text>{" "}
-                    Black
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Crystal:
-                    </Text>{" "}
-                    Domed, scratch‑resistant sapphire crystal with
-                    anti‑reflective treatment inside
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Water resistance:
-                    </Text>{" "}
-                    5 bar (50 metres / 167 feet){" "}
-                  </ListItem>
+                  {getInpsect.length === 0 ? (
+                    <>
+                      <Text> No details found</Text>
+                    </>
+
+                  ) : (
+                    getInpsect.map((dt)=>(
+                    
+                    <>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Brake:
+                        </Text>{" "}
+                        {convertEnum(dt.brake)}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Bumpers:
+                        </Text>{" "}
+                        {convertEnum(dt.bumpers)}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Light:
+                        </Text>{" "}
+                        {convertEnum(dt.light)}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Milleage:
+                        </Text>{" "}
+                        {dt.milleage}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Tyres:
+                        </Text>{" "}
+                        {convertEnum(dt.tyres)}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Engine:
+                        </Text>{" "}
+                        {convertEnum(dt.engine)}
+                      </ListItem>
+                      <ListItem>
+                        <Text as={"span"} fontWeight={"bold"}>
+                          Interior:
+                        </Text>{" "}
+                        {convertEnum(dt.interior)}
+                      </ListItem>
+                    </>
+                    ))
+                  )}
                 </List>
               </Box>
             </Stack>
 
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent={"center"}
-            >
-              <MdLocalShipping />
-              <Text>2-3 business days delivery</Text>
-            </Stack>
           </Stack>
         </SimpleGrid>
       </Container>

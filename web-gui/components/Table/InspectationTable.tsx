@@ -31,6 +31,7 @@ import {
 import { addVehicleLogo, byte2Vin, convertEnum } from "utils/formatingUtils";
 
 const columns: Array<String> = [
+  "vin",
   "brake",
   "bumpers",
   "interior",
@@ -95,6 +96,7 @@ export default function InspectationTable() {
               getData.map((dt: Details, index: Key | null | undefined) => (
                 <>
                   <Tr key={index}>
+                  <Td>{byte2Vin(dt.car_id.vin)}</Td>
                     <Td>{convertEnum(dt.brake)}</Td>
                     <Td>{convertEnum(dt.bumpers)}</Td>
                     <Td>{convertEnum(dt.interior)}</Td>

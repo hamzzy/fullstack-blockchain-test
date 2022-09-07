@@ -8,5 +8,9 @@ query GetAllInspectation {
     light
     milleage
     tyres
+    car_id {
+      id
+      vin
+    }   
   }
 }
