@@ -1,4 +1,4 @@
-# A Vehicle Inspection Blockchain APplication
+# A Vehicle Inspection Blockchain Application
 
 ## This project contain of three section
 - smart contract (solidity)
