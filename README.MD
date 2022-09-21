@@ -4,3 +4,8 @@
 - smart contract (solidity)
 - web-gui frontend (next.js, typescript)
 - subgraph (The graph)
+
+
+# Get Started
+
+## smart-contract 
